@@ -1,9 +1,10 @@
-import React from "react";
-
 export const NavBar = () => {
     return (
         <div>
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav
+                className="navbar navbar-expand-lg navbar-light"
+                style={{ backgroundColor: "#30384b" }}
+            >
                 <div className="container-fluid">
                     <a className="navbar-brand" href="#">
                         FocusMaster
@@ -37,6 +38,11 @@ export const NavBar = () => {
                             <li className="nav-item">
                                 <a className="nav-link" href="#">
                                     Setting
+                                </a>
+                            </li>
+                            <li className="nav-item">
+                                <a className="nav-link" href="#">
+                                    Login
                                 </a>
                             </li>
                         </ul>
