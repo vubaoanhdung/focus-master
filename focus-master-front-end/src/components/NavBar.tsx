@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export const NavBar = () => {
     return (
         <div>
@@ -6,9 +7,9 @@ export const NavBar = () => {
                 style={{ backgroundColor: "#30384b" }}
             >
                 <div className="container-fluid">
-                    <a className="navbar-brand" href="#">
+                    <Link to="/" className="navbar-brand">
                         FocusMaster
-                    </a>
+                    </Link>
                     <button
                         className="navbar-toggler"
                         type="button"
