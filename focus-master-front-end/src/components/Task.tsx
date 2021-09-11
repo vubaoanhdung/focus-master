@@ -1,12 +1,14 @@
 export const Task = () => {
     return (
         <div className="list-group-item bg-transparent">
-            <input
-                className="form-check-input me-1 bg-transparent"
-                type="checkbox"
-                value=""
-            />
-            Task
+            <div className="card">
+                <div className="card-header">Task Header</div>
+                <div className="card-body">
+                    <blockquote className="blockquote mb-0">
+                        <footer className="blockquote-footer">Notes</footer>
+                    </blockquote>
+                </div>
+            </div>
         </div>
     );
 };

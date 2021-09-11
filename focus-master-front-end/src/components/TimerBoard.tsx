@@ -5,7 +5,7 @@ export const TimerBoard = () => {
     return (
         <div>
             <div className="row">
-                <div className="btn-group btn-group-lg p-5" role="group">
+                <div className="btn-group btn-group-md p-5" role="group">
                     <button type="button" className="btn btn-outline-secondary">
                         Pomodoro
                     </button>
@@ -17,11 +17,12 @@ export const TimerBoard = () => {
                     </button>
                 </div>
             </div>
-            <div className="row justify-content-center p-5">
+            <div className="row justify-content-center p-2 border border-white w-75 m-auto">
                 <div className="col-xs-8 col-md-8 col-lg-8">
                     <CircularProgressbar
                         value={60}
                         text={`60%`}
+                        
                         styles={buildStyles({
                             textColor: "#fff",
                             pathColor: "#f54242",
@@ -30,9 +31,9 @@ export const TimerBoard = () => {
                     />
                 </div>
             </div>
-            <div className="row justify-content-center align-items-center p-4">
+            <div className="row justify-content-center align-items-center p-5">
                 <div className="col-xs-4 col-md-4 col-lg-4 text-center">
-                    <FaPlay size="6em" color="gray"></FaPlay>
+                    <FaPlay size="4em" color="#ddd"></FaPlay>
                 </div>
             </div>
         </div>

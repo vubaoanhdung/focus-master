@@ -9,13 +9,13 @@ function App() {
             <Route exact path="/">
                 <div className="container border border-warning">
                     <div className="row justify-content-center">
-                        <div className="col-xs-8 col-md-8 col-lg-8 p-5">
+                        <div className="col-xs-8 col-md-8 col-lg-8 p2">
                             <NavBar></NavBar>
                             <hr />
                         </div>
                     </div>
 
-                    <div className="row justify-content-around">
+                    <div className="row justify-content-around p-4">
                         <div className="col-xs-6 col-md-6 col-lg-6 border border-secondary">
                             <TimerBoard></TimerBoard>
                         </div>
