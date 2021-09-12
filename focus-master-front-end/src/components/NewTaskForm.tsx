@@ -25,10 +25,16 @@ export const NewTaskForm = () => {
                         ></textarea>
                     </div>
                     <div className=" row justify-content-lg-around pt-3">
-                        <button className="col-lg-3 btn btn-secondary">
+                        <button
+                            className="col-lg-3 btn btn-secondary"
+                            type="button"
+                        >
                             Cancel
                         </button>
-                        <button className="col-lg-3 btn btn-primary">
+                        <button
+                            className="col-lg-3 btn btn-primary"
+                            type="button"
+                        >
                             Save
                         </button>
                     </div>
