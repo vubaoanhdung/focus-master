@@ -4,7 +4,7 @@ import "react-circular-progressbar/dist/styles.css";
 import { RunTimerButton } from "./RunTimerButton";
 import { StopTimerButton } from "./StopTimerButton";
 export const TimerBoard = () => {
-    const [isPaused, setIsPaused] = useState(false);
+    const [isPaused, setIsPaused] = useState(true);
     const [secondsLeft, setSecondsLeft] = useState(25 * 60);
     const [mode, setMode] = useState("work");
 
@@ -20,24 +20,28 @@ export const TimerBoard = () => {
         const nextSecondsLeft = (nextMode === "work" ? 25 : 5) * 60;
         setSecondsLeft(nextSecondsLeft);
         secondsLeftRef.current = nextSecondsLeft;
+
+        setIsPaused(true);
+        isPausedRef.current = true;
     };
 
     const tick = () => {
         secondsLeftRef.current--;
         setSecondsLeft(secondsLeftRef.current);
+        // setSecondsLeft(secondsLeft - 1);
     };
 
     useEffect(() => {
+        console.log("rerender");
         const interval = setInterval(() => {
             if (isPausedRef.current) {
                 return;
             }
             if (secondsLeftRef.current === 0) {
                 switchMode();
-                console.log("switching mode");
             }
             tick();
-        }, 10);
+        }, 1000);
         return () => clearInterval(interval);
     }, []);
 
@@ -51,10 +55,31 @@ export const TimerBoard = () => {
         <div>
             <div className="row">
                 <div className="btn-group btn-group-md p-5" role="group">
-                    <button type="button" className="btn btn-outline-secondary">
+                    <button
+                        type="button"
+                        className={`btn btn-outline-secondary ${
+                            mode === "work" ? "active" : ""
+                        }`}
+                        onClick={() => {
+                            if (mode !== "work") {
+                                switchMode();
+                            }
+                        }}
+                    >
                         Pomodoro
                     </button>
-                    <button type="button" className="btn btn-outline-secondary">
+                    <button
+                        type="button"
+                        className={`btn btn-outline-secondary ${
+                            mode === "break" ? "active" : ""
+                        }`}
+                        onClick={() => {
+                            if (mode !== "break") {
+                                switchMode();
+                            }
+                            console.log("Break");
+                        }}
+                    >
                         Break
                     </button>
                 </div>

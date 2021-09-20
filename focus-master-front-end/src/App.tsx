@@ -15,7 +15,7 @@ function App() {
                         </div>
                     </div>
 
-                    <div className="row justify-content-around p-4">
+                    <div className="row justify-content-around p-4 align-items-start">
                         <div className="col-6 border border-secondary">
                             <TimerBoard></TimerBoard>
                         </div>
