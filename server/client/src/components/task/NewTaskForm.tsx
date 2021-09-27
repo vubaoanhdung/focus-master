@@ -1,6 +1,6 @@
 import { BiTask } from "react-icons/bi";
 import { useForm, SubmitHandler } from "react-hook-form";
-import { addTask } from "./../actions";
+import { addTask } from "../../actions";
 import { useDispatch } from "react-redux";
 
 interface FormInput {
@@ -18,9 +18,9 @@ export const NewTaskForm = () => {
     };
 
     return (
-        <div className="card text-center bg-transparent">
+        <div className="card text-center bg-transparent border border-secondary">
             <div className="card-header p-3">
-                <BiTask className="m-auto" size="2em"></BiTask>
+                <BiTask className="m-auto text-white-50" size="2em"></BiTask>
             </div>
             <div className="card-body">
                 <form onSubmit={handleSubmit(onFormSubmit)}>
@@ -35,12 +35,18 @@ export const NewTaskForm = () => {
                     </div>
 
                     <div className="form-group">
-                        <label htmlFor="note">NOTE</label>
+                        <label
+                            htmlFor="note"
+                            className="text-white-50 mt-3 mb-2"
+                        >
+                            NOTE
+                        </label>
                         <textarea
                             {...register("note")}
                             className="form-control"
                             id="note"
                             rows={1}
+                            placeholder="(optional)"
                         ></textarea>
                     </div>
                     <div className=" row pt-3 justify-content-lg-around">

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-import GoogleIcon from "../components/GoogleIcon";
+import GoogleIcon from "./GoogleIcon";
+import SettingModal from "./SettingModal";
 
 export const NavBar = () => {
     return (
@@ -9,7 +10,7 @@ export const NavBar = () => {
                 style={{ backgroundColor: "#30384b" }}
             >
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand">
+                    <Link to="/" className="navbar-brand text-white-50">
                         FocusMaster
                     </Link>
                     <button
@@ -27,11 +28,14 @@ export const NavBar = () => {
                         className="collapse navbar-collapse"
                         id="navbarTogglerDemo02"
                     >
-                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0">
-                            <li className="nav-item">
-                                <Link className="nav-link" to="/">
+                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 align-items-center">
+                            <li className="nav-item border border-secondary rounded m-2">
+                                <Link className="nav-link text-white-50" to="/">
                                     Home
                                 </Link>
+                            </li>
+                            <li className="nav-item border border-secondary rounded m-2">
+                                <SettingModal />
                             </li>
 
                             <li className="nav-item">

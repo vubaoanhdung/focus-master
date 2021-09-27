@@ -30,6 +30,20 @@ export const fetchTasks = () => async (dispatch: Dispatch) => {
     }
 };
 
+/*
+    Delete a task
+*/
+export const deleteTask = (taskId: string) => async (dispatch: Dispatch) => {
+    try {
+        await axios.delete(`/api/tasks/${taskId}`);
+        dispatch({ type: "DELETE_TASK", payload: taskId });
+    } catch (error) {
+        console.log(error);
+    }
+};
+
+// -----------
+
 // User Actions
 export const fetchUser = () =>
     async function (dispatch: Dispatch) {

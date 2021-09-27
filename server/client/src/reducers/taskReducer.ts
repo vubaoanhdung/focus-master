@@ -1,12 +1,14 @@
 import { AnyAction } from "redux";
+import _ from "lodash";
 
 type TaskState = {
     tasks: Task[];
 };
 
 interface Task {
-    name: String;
-    note: String;
+    name: string;
+    note: string;
+    taskId: string;
 }
 
 const initialState = {
@@ -20,8 +22,14 @@ const taskReducer = (state: TaskState = initialState, action: AnyAction) => {
             return { ...state, tasks: [...state.tasks, newTask] };
 
         case "FETCH_TASKS":
-            const tasks = action.payload;
-            return { ...state, tasks: [...state.tasks, ...tasks] };
+            return { ...state, tasks: [...state.tasks, ...action.payload] };
+
+        case "DELETE_TASK":
+            const tasks = _.filter(
+                state.tasks,
+                (task) => task.taskId !== action.payload,
+            );
+            return { ...state, tasks: [...tasks] };
 
         default:
             return state;

@@ -1,10 +1,10 @@
-import { NavBar } from "./components/NavBar";
-import { TaskBoard } from "./components/TaskBoard";
-import { TimerBoard } from "./components/TimerBoard";
+import { NavBar } from "./navbar/NavBar";
+import { TaskBoard } from "./task/TaskBoard";
+import { TimerBoard } from "./timer/TimerBoard";
 import { Route, BrowserRouter as Router } from "react-router-dom";
 import { useDispatch } from "react-redux";
 import { useEffect } from "react";
-import { fetchUser } from "./actions";
+import { fetchUser } from "../actions";
 
 function App() {
     const dispatch = useDispatch();
@@ -19,12 +19,12 @@ function App() {
                     <div className="row justify-content-center">
                         <div className="col-8 p2">
                             <NavBar></NavBar>
-                            <hr />
+                            <hr className="text-white" />
                         </div>
                     </div>
 
                     <div className="row justify-content-around p-4 align-items-start">
-                        <div className="col-6 border border-secondary">
+                        <div className="col-6 border border-secondary rounded">
                             <TimerBoard></TimerBoard>
                         </div>
                         <div className="col-4">

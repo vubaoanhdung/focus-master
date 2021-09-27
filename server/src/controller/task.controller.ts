@@ -54,8 +54,8 @@ export const getAllTasksHandler = async (req: Request, res: Response) => {
         const modifiedTasks = tasks.map((task) => {
             return omit(task.toJSON(), ["_id", "owner"]);
         });
-        res.send(modifiedTasks);
+        return res.send(modifiedTasks);
     } catch (error: any) {
-        res.status(400).send(error.message);
+        return res.status(400).send(error.message);
     }
 };

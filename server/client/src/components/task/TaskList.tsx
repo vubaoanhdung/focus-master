@@ -1,8 +1,8 @@
 import { Task } from "./Task";
 import { useSelector, useDispatch } from "react-redux";
-import { RootState } from "../reducers";
+import { RootState } from "../../reducers";
 import { useEffect } from "react";
-import { fetchTasks } from "../actions";
+import { fetchTasks } from "../../actions";
 
 export const TaskList = () => {
     const dispatch = useDispatch();
@@ -20,7 +20,7 @@ export const TaskList = () => {
         <div className="row ">
             <div className="col-12">
                 <div className="row pt-3">
-                    <h4>Tasks</h4>
+                    <h5 className="text-white-50">TASKS</h5>
                 </div>
                 <ul className="row list-group">
                     {tasks.map((task, index) => {

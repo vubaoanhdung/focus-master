@@ -1,21 +1,24 @@
 import { useState } from "react";
 import { BsThreeDotsVertical } from "react-icons/bs";
+import { deleteTask } from "../../actions";
+import { useDispatch } from "react-redux";
 
 interface TaskProps {
-    name: String;
-    note: String;
-    taskId: String;
+    name: string;
+    note: string;
+    taskId: string;
 }
 
 export const Task: React.FC<TaskProps> = ({ name, note, taskId }) => {
     const [isChecked, setIsChecked] = useState(false);
+    const dispatch = useDispatch();
 
     const onEdit = () => {
         console.log("Edit Item with ID: " + taskId);
     };
 
     const onDelete = () => {
-        console.log("Delete Item with ID: " + taskId);
+        dispatch(deleteTask(taskId));
     };
 
     return (
