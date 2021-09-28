@@ -1,3 +1,4 @@
+import { ADD_TASK, FETCH_TASKS, DELETE_TASK } from "./../actions/types";
 import { AnyAction } from "redux";
 import _ from "lodash";
 
@@ -17,14 +18,14 @@ const initialState = {
 
 const taskReducer = (state: TaskState = initialState, action: AnyAction) => {
     switch (action.type) {
-        case "ADD_TASK":
+        case ADD_TASK:
             const newTask: Task = action.payload;
             return { ...state, tasks: [...state.tasks, newTask] };
 
-        case "FETCH_TASKS":
+        case FETCH_TASKS:
             return { ...state, tasks: [...state.tasks, ...action.payload] };
 
-        case "DELETE_TASK":
+        case DELETE_TASK:
             const tasks = _.filter(
                 state.tasks,
                 (task) => task.taskId !== action.payload,

@@ -15,26 +15,28 @@ export const TaskList = () => {
             dispatch(fetchTasks());
         }
     }, [dispatch, user]);
-
     return (
-        <div className="row ">
-            <div className="col-12">
-                <div className="row pt-3">
+        <div className="col-12">
+            {tasks.length === 0 ? (
+                ""
+            ) : (
+                <div className="row">
                     <h5 className="text-white-50">TASKS</h5>
                 </div>
-                <ul className="row list-group">
-                    {tasks.map((task, index) => {
-                        return (
-                            <Task
-                                name={task.name}
-                                note={task.note}
-                                key={task.taskId}
-                                taskId={task.taskId}
-                            />
-                        );
-                    })}
-                </ul>
-            </div>
+            )}
+
+            <ul className="row list-group">
+                {tasks.map((task, index) => {
+                    return (
+                        <Task
+                            name={task.name}
+                            note={task.note}
+                            key={task.taskId}
+                            taskId={task.taskId}
+                        />
+                    );
+                })}
+            </ul>
         </div>
     );
 };

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import Brand from "./Brand";
 import GoogleIcon from "./GoogleIcon";
 import SettingModal from "./SettingModal";
 
@@ -10,9 +11,7 @@ export const NavBar = () => {
                 style={{ backgroundColor: "#30384b" }}
             >
                 <div className="container-fluid">
-                    <Link to="/" className="navbar-brand text-white-50">
-                        FocusMaster
-                    </Link>
+                    <Brand />
                     <button
                         className="navbar-toggler"
                         type="button"

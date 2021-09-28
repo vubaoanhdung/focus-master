@@ -1,23 +1,34 @@
 import { useState, useEffect, useRef } from "react";
 import { CircularProgressbar, buildStyles } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import { RunTimerButton } from "./RunTimerButton";
+import { StartTimerButton } from "./StartTimerButton";
 import { StopTimerButton } from "./StopTimerButton";
-export const TimerBoard = () => {
-    const [isPaused, setIsPaused] = useState(true);
-    const [secondsLeft, setSecondsLeft] = useState(25 * 60);
-    const [mode, setMode] = useState("work");
+import { useSelector } from "react-redux";
+import { RootState } from "../../reducers";
+import { SettingState } from "../../reducers/settingReducer";
 
+export const TimerBoard = () => {
+    const setting: SettingState = useSelector(
+        (state: RootState) => state.settingReducer,
+    );
+
+    // States
+    const [isPaused, setIsPaused] = useState(true);
+    const [mode, setMode] = useState("pomodoro");
+    const [secondsLeft, setSecondsLeft] = useState(setting.pomodoro * 60);
+
+    // references to use inside time interval
     const secondsLeftRef = useRef(secondsLeft);
     const isPausedRef = useRef(isPaused);
     const modeRef = useRef(mode);
 
     const switchMode = () => {
-        const nextMode = modeRef.current === "work" ? "break" : "work";
+        const nextMode = modeRef.current === "pomodoro" ? "break" : "pomodoro";
         setMode(nextMode);
         modeRef.current = nextMode;
 
-        const nextSecondsLeft = (nextMode === "work" ? 25 : 5) * 60;
+        const nextSecondsLeft =
+            (nextMode === "pomodoro" ? setting.pomodoro : setting.break) * 60;
         setSecondsLeft(nextSecondsLeft);
         secondsLeftRef.current = nextSecondsLeft;
 
@@ -41,9 +52,10 @@ export const TimerBoard = () => {
             tick();
         }, 1000);
         return () => clearInterval(interval);
-    }, []);
+    });
 
-    const modeSeconds = mode === "work" ? 25 * 60 : 5 * 60;
+    const modeSeconds =
+        mode === "pomodoro" ? setting.pomodoro * 60 : setting.break * 60;
     const percentage = Math.round((secondsLeft / modeSeconds) * 100);
     const minutes = Math.floor(secondsLeft / 60);
     let seconds: string | number = secondsLeft % 60;
@@ -56,10 +68,10 @@ export const TimerBoard = () => {
                     <button
                         type="button"
                         className={`btn btn-outline-secondary ${
-                            mode === "work" ? "active" : ""
+                            mode === "pomodoro" ? "active" : ""
                         }`}
                         onClick={() => {
-                            if (mode !== "work") {
+                            if (mode !== "pomodoro") {
                                 switchMode();
                             }
                         }}
@@ -88,16 +100,17 @@ export const TimerBoard = () => {
                         text={minutes + " : " + seconds}
                         styles={buildStyles({
                             textColor: "#fff",
-                            pathColor: mode === "work" ? "#f54242" : "#00f7ff",
+                            pathColor:
+                                mode === "pomodoro" ? "#f54242" : "#00f7ff",
                             trailColor: "rgba(255,255,255,.2)",
                         })}
                     />
                 </div>
             </div>
             <div className="row justify-content-center p-5">
-                <div className="col-2 text-center border border-secondary p-2 rounded">
+                <div className="col-2 text-center">
                     {isPaused ? (
-                        <RunTimerButton
+                        <StartTimerButton
                             onClick={() => {
                                 setIsPaused(false);
                                 isPausedRef.current = false;

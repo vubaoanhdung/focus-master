@@ -24,10 +24,10 @@ function App() {
                     </div>
 
                     <div className="row justify-content-around p-4 align-items-start">
-                        <div className="col-6 border border-secondary rounded">
+                        <div className="col-lg-6 border border-secondary rounded">
                             <TimerBoard></TimerBoard>
                         </div>
-                        <div className="col-4">
+                        <div className="col-lg-6">
                             <TaskBoard />
                         </div>
                     </div>
