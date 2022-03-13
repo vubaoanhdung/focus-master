@@ -1,6 +1,7 @@
 import { useSelector } from "react-redux";
 import { AiFillGoogleCircle } from "react-icons/ai";
 import { RootState } from "../../reducers";
+import "./googleIcon.css";
 
 const GoogleIcon = () => {
     const user = useSelector((state: RootState) => state.userReducer);
